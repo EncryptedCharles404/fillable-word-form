@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrated Sycamore Group LLC – Employment Application</title>
+    <style>
+        :root {
+            --navy: #1B3A5C;
+            --gold: #C8973A;
+            --gold-light: #FFF8F0;
+            --bg: #F0F3F7;
+            --card: #ffffff;
+            --text: #2a2a2a;
+            --border: #c8cdd6;
+            --label-bg: #E8ECF0;
+            --input-bg: #FAFAF8;
+            --success: #1e6b2e;
+            --sig-gold: #FFF8F0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 13.5px;
+            line-height: 1.45;
+        }
+
+        /* HEADER */
+        .header {
+            background: var(--navy);
+            color: #fff;
+            padding: 22px 20px 18px;
+            text-align: center;
+            border-bottom: 5px solid var(--gold);
+            position: relative;
+        }
+        .header h1 { font-size: 22px; letter-spacing: 2px; font-weight: 700; margin-bottom: 4px; }
+        .header .sub { font-size: 12px; color: #8faec8; letter-spacing: 0.5px; }
+        .header .contact-strip {
+            font-size: 11px; color: #a0bcd4; margin-top: 8px;
+            display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+        }
+
+        /* CONTAINER */
+        .container { max-width: 980px; margin: 0 auto; padding: 18px 18px 60px; }
+
+        /* INSTRUCTION BOX */
+        .instruction-box {
+            background: #e8f4fd; border-left: 5px solid #1a78c2;
+            padding: 14px 16px; margin-bottom: 20px; border-radius: 4px;
+        }
+        .instruction-box h3 { color: #0c3d6e; margin-bottom: 6px; font-size: 14px; }
+        .instruction-box ol { padding-left: 18px; }
+        .instruction-box li { margin-bottom: 3px; }
+
+        /* PANELS */
+        .panel {
+            background: var(--card); border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            margin-bottom: 22px; overflow: hidden;
+        }
+        .panel-header {
+            background: var(--navy); color: #fff;
+            padding: 10px 16px; font-size: 13px;
+            font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+        }
+        .panel-body { padding: 16px; }
+
+        /* GRID */
+        .fg { display: grid; gap: 10px; margin-bottom: 12px; align-items: end; }
+        .fg-2 { grid-template-columns: 1fr 1fr; }
+        .fg-3 { grid-template-columns: 1fr 1fr 1fr; }
+        .fg-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+        .fg-5 { grid-template-columns: 2fr 1fr 2fr 1fr 1fr; }
+        .fg-addr { grid-template-columns: 3fr 1fr 2fr 1fr 1fr; }
+        .fg-free { display: grid; gap: 10px; margin-bottom: 12px; align-items: end; }
+
+        @media (max-width: 700px) {
+            .fg-2, .fg-3, .fg-4, .fg-5, .fg-addr, .fg-free { grid-template-columns: 1fr; }
+        }
+
+        /* FIELD GROUPS */
+        .field { display: flex; flex-direction: column; }
+        label.fl {
+            font-weight: 600; font-size: 11px; color: #3a4a5c;
+            background: var(--label-bg); padding: 3px 6px;
+            border-radius: 3px 3px 0 0; border: 1px solid var(--border);
+            border-bottom: none; text-transform: uppercase; letter-spacing: 0.3px;
+        }
+        input[type="text"], input[type="email"], input[type="date"],
+        input[type="number"], select, textarea {
+            width: 100%; padding: 7px 9px;
+            border: 1px solid var(--border); border-radius: 0 0 3px 3px;
+            background: var(--input-bg); font-size: 13px; color: var(--text);
+            font-family: inherit;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none; border-color: var(--navy); background: #fff;
+        }
+        textarea { resize: vertical; min-height: 62px; border-radius: 0 0 3px 3px; }
+        select { cursor: pointer; }
+
+        /* SECTION DIVIDERS */
+        .sub-heading {
+            font-weight: 700; font-size: 12px; text-transform: uppercase;
+            color: var(--navy); border-bottom: 1px solid var(--navy);
+            padding-bottom: 4px; margin: 14px 0 8px; letter-spacing: 0.5px;
+        }
+
+        /* CHECKBOX GROUPS */
+        .cb-group-title {
+            font-weight: 700; font-size: 11px; text-transform: uppercase;
+            color: var(--navy); margin-bottom: 6px; letter-spacing: 0.4px;
+        }
+        .cb-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+            gap: 6px; background: #f6f8fb; padding: 10px;
+            border: 1px solid var(--border); border-radius: 4px; margin-bottom: 10px;
+        }
+        .cb-item { display: flex; align-items: flex-start; gap: 7px; font-size: 13px; cursor: pointer; }
+        .cb-item input[type="checkbox"] {
+            width: 15px; height: 15px; margin-top: 1px; flex-shrink: 0;
+            accent-color: var(--navy); cursor: pointer;
+            border: none; padding: 0; background: none;
+        }
+        .cb-item label { font-weight: normal; cursor: pointer; line-height: 1.3; }
+
+        /* YES/NO INLINE */
+        .yn-row { display: flex; align-items: center; gap: 18px; margin-bottom: 10px; flex-wrap: wrap; }
+        .yn-label { font-weight: 600; font-size: 12.5px; flex: 1; min-width: 220px; }
+        .yn-opts { display: flex; gap: 14px; }
+        .yn-opts label { display: flex; align-items: center; gap: 5px; font-weight: normal; cursor: pointer; }
+        .yn-opts input[type="radio"] { accent-color: var(--navy); width: 14px; height: 14px; cursor: pointer; }
+
+        /* TABLE STYLE */
+        .form-table { width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 12.5px; }
+        .form-table th {
+            background: var(--label-bg); color: var(--navy);
+            border: 1px solid var(--border); padding: 6px 8px;
+            text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.3px;
+        }
+        .form-table td { border: 1px solid var(--border); padding: 4px 5px; vertical-align: top; }
+        .form-table td input, .form-table td select {
+            border: none; border-radius: 0; background: transparent; padding: 4px;
+            font-size: 12.5px; width: 100%;
+        }
+        .form-table td input:focus, .form-table td select:focus {
+            outline: 1px solid var(--navy); background: #fff;
+        }
+
+        /* EMPLOYER BLOCKS */
+        .employer-block {
+            border: 1px solid var(--border); border-radius: 4px;
+            padding: 12px; margin-bottom: 12px; background: #fafbfc;
+        }
+        .employer-block .block-title {
+            font-weight: 700; color: var(--navy); font-size: 12px;
+            text-transform: uppercase; margin-bottom: 10px;
+            padding-bottom: 4px; border-bottom: 1px dashed var(--border);
+        }
+
+        /* REFERENCE BLOCKS */
+        .ref-block {
+            border: 1px solid var(--border); border-radius: 4px;
+            padding: 12px; margin-bottom: 10px; background: #fafbfc;
+        }
+        .ref-block .block-title { font-weight: 700; color: var(--navy); font-size: 12px; margin-bottom: 8px; }
+
+        /* SIGNATURE */
+        .sig-wrap {
+            border: 2px dashed var(--gold); background: var(--sig-gold);
+            border-radius: 4px; padding: 8px; margin-top: 6px;
+        }
+        .sig-wrap .sig-label {
+            font-size: 11px; color: #7a6030; font-weight: 600;
+            margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.4px;
+        }
+        .sig-canvas {
+            width: 100%; height: 100px; background: #fff; cursor: crosshair;
+            border: 1px solid #ddd; border-radius: 3px; display: block;
+            touch-action: none;
+        }
+        .sig-actions { display: flex; justify-content: flex-end; margin-top: 5px; }
+        .btn-clear {
+            background: #c0392b; color: #fff; border: none;
+            padding: 4px 12px; font-size: 11px; border-radius: 3px; cursor: pointer;
+        }
+
+        /* LEGAL TEXT BLOCK */
+        .legal-text {
+            background: #f9f5e8; border-left: 4px solid var(--gold);
+            padding: 10px 12px; border-radius: 3px; font-size: 12px;
+            color: #444; line-height: 1.6; margin: 10px 0;
+        }
+
+        /* ANE 3-COL SIG TABLE */
+        .sig-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+        .sig-table th {
+            background: var(--label-bg); border: 1px solid var(--border);
+            padding: 6px 8px; font-size: 11px; text-align: center;
+            text-transform: uppercase; color: var(--navy);
+        }
+        .sig-table td { border: 1px solid var(--border); padding: 8px; vertical-align: top; }
+
+        /* W-4 STYLES */
+        .w4-wrap {
+            border: 2px solid #000; padding: 16px;
+            background: #fff; margin-top: 0;
+        }
+        .w4-header {
+            display: flex; align-items: center; gap: 12px;
+            border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 14px;
+        }
+        .w4-form-label {
+            border: 2px solid #000; padding: 6px 10px;
+            font-size: 20px; font-weight: 900; white-space: nowrap;
+        }
+        .w4-title { flex: 1; text-align: center; }
+        .w4-title strong { font-size: 15px; display: block; }
+        .w4-title span { font-size: 11px; color: #666; }
+        .w4-year { font-size: 20px; font-weight: 900; }
+        .w4-step-bar {
+            background: #000; color: #fff; padding: 4px 10px;
+            font-weight: 700; font-size: 12px; margin: 10px 0 8px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .w4-step-num {
+            background: #fff; color: #000; border-radius: 50%;
+            width: 20px; height: 20px; display: flex; align-items: center;
+            justify-content: center; font-size: 11px; font-weight: 900; flex-shrink: 0;
+        }
+        .w4-sub { border: 1px solid #888; padding: 10px; margin-bottom: 10px; background: #fafafa; }
+        .w4-employer-box {
+            border: 2px solid #000; padding: 10px; margin-top: 12px;
+            background: #f0f0f0;
+        }
+        .w4-employer-box .title { font-weight: 700; font-size: 12px; margin-bottom: 8px; }
+
+        /* COMPLAINT PROCEDURE */
+        .complaint-steps { counter-reset: complaint; list-style: none; padding: 0; }
+        .complaint-steps li {
+            counter-increment: complaint; padding: 8px 8px 8px 40px;
+            position: relative; border-bottom: 1px solid var(--border); font-size: 13px;
+        }
+        .complaint-steps li:last-child { border-bottom: none; }
+        .complaint-steps li::before {
+            content: counter(complaint);
+            position: absolute; left: 8px; top: 8px;
+            background: var(--navy); color: #fff; width: 22px; height: 22px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 12px; font-weight: 700;
+        }
+
+        .contact-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 12.5px; }
+        .contact-table th { background: var(--label-bg); border: 1px solid var(--border); padding: 6px; text-align: left; font-size: 11px; text-transform: uppercase; }
+        .contact-table td { border: 1px solid var(--border); padding: 6px 8px; }
+
+        /* ADD ROW BUTTON */
+        .btn-add-row {
+            background: none; border: 1px dashed var(--navy); color: var(--navy);
+            padding: 4px 12px; font-size: 11px; border-radius: 3px; cursor: pointer;
+            margin-top: 4px; transition: background 0.15s;
+        }
+        .btn-add-row:hover { background: var(--label-bg); }
+
+        /* REFEREE LINK BOX */
+        .ref-link-box {
+            background: #eef6ff; border: 1px solid #90bce8; border-radius: 5px;
+            padding: 14px 16px; margin-bottom: 18px;
+        }
+        .ref-link-box h3 { color: var(--navy); font-size: 13px; margin-bottom: 8px; }
+        .ref-link-box p { font-size: 12.5px; color: #444; margin-bottom: 10px; }
+        .ref-link-btn {
+            display: inline-block; background: var(--navy); color: #fff;
+            text-decoration: none; padding: 7px 16px; border-radius: 4px;
+            font-size: 12px; font-weight: 600; margin-right: 8px; margin-bottom: 4px;
+        }
+        .ref-link-btn:hover { background: #0e2540; }
+
+        /* PAGE BREAK */
+        .page-break { page-break-before: always !important; }
+
+        /* FOOTER */
+        .doc-footer {
+            text-align: center; font-size: 11px; color: #888;
+            padding: 10px; border-top: 1px solid var(--border); margin-top: 20px;
+        }
+
+        /* SUBMIT BUTTON */
+        .action-bar { text-align: center; margin: 24px 0 40px; }
+        .btn-submit {
+            background: var(--success); color: #fff; border: none;
+            padding: 14px 40px; font-size: 15px; font-weight: 700;
+            border-radius: 4px; cursor: pointer; box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            transition: background 0.2s;
+        }
+        .btn-submit:hover { background: #14501f; }
+
+        /* PRINT OVERRIDES */
+        @media print {
+            body { background: #fff; font-size: 11.5px; }
+            .instruction-box, .action-bar, .sig-actions, .btn-clear { display: none !important; }
+            .panel { box-shadow: none; margin-bottom: 12px; }
+            .page-break { page-break-before: always; padding-top: 8px; }
+            input, select, textarea { background: transparent !important; border-color: #999 !important; }
+            .cb-grid { background: transparent !important; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>INTEGRATED SYCAMORE GROUP LLC</h1>
+    <div class="sub">HCS Provider · Assisted Living & Residential Care</div>
+    <div class="contact-strip">
+        <span>📍 8315 Sierra Hill Ct, Houston TX 77083</span>
+        <span>📞 832-335-4098 / 713-835-2122</span>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="instruction-box">
+        <h3>📝 How to Complete This Form</h3>
+        <ol>
+            <li>Fill in <strong>every field</strong> — required fields are marked. Type directly into each box.</li>
+            <li>For Yes/No questions, click the correct radio button.</li>
+            <li>Check all boxes that apply in checkbox sections.</li>
+            <li>Sign inside each gold-bordered signature area using your mouse, trackpad, or finger (touchscreen).</li>
+            <li>When finished, click <strong>"Download as PDF"</strong> and choose <em>Save as PDF</em> as your printer.</li>
+        </ol>
+    </div>
+
+    <form id="appForm">
+    <div id="printArea">
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 1: POSITION & APPLICATION
+    ═══════════════════════════════════════════════════════ -->
+    <div class="panel">
+        <div class="panel-header">1 — Position &amp; Application Details</div>
+        <div class="panel-body">
+            <div class="fg fg-3">
+                <div class="field"><label class="fl">Position Applied For</label><input type="text" value="Direct Support Professional (DSP)" required></div>
+                <div class="field"><label class="fl">Desired Pay Rate ($/hr)</label><input type="text" placeholder="e.g. 18.00" required></div>
+                <div class="field"><label class="fl">Date of Application</label><input type="date" required></div>
+            </div>
+            <div class="fg fg-2">
+                <div class="field"><label class="fl">Employment Type Requested</label>
+                    <select required>
+                        <option value="">-- Select --</option>
+                        <option>Full-Time</option>
+                        <option>Part-Time</option>
+                        <option>PRN (As Needed)</option>
+                    </select>
+                </div>
+                <div class="field"><label class="fl">Available Start Date</label><input type="date" required></div>
+            </div>
+
+            <div class="sub-heading">How Did You Hear About Us?</div>
+            <div class="cb-grid" style="grid-template-columns:repeat(auto-fill, minmax(160px,1fr));">
+                <div class="cb-item"><input type="checkbox"><label>Indeed / Job Board</label></div>
+                <div class="cb-item"><input type="checkbox"><label>Company Website</label></div>
+                <div class="cb-item"><input type="checkbox"><label>Employee Referral</label></div>
+                <div class="cb-item"><input type="checkbox"><label>Social Media</label></div>
+                <div class="cb-item"><input type="checkbox"><label>Career Fair</label></div>
+                <div class="cb-item"><input type="checkbox"><label>Walk-In</label></div>
+                <div class="cb-item"><input type="checkbox" id="hearOtherCb"><label>Other (explain below)</label></div>
+            </div>
+            <div class="field" style="margin-bottom:0;"><label class="fl">If Other, Please Explain</label><input type="text" placeholder="Describe referral source"></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 2: PERSONAL INFORMATION
+    ═══════════════════════════════════════════════════════ -->
+    <div class="panel">
+        <div class="panel-header">2 — Personal Information</div>
+        <div class="panel-body">
+            <div class="fg fg-3">
+                <div class="field"><label class="fl">Last Name</label><input type="text" placeholder="e.g. Doe" required></div>
+                <div class="field"><label class="fl">First Name</label><input type="text" placeholder="e.g. Jane" required></div>
+                <div class="field"><label class="fl">Middle Name / Initial</label><input type="text" placeholder="e.g. A."></div>
+            </div>
+
+            <div class="sub-heading">Current Address</div>
+            <div class="fg fg-addr">
+                <div class="field"><label class="fl">Street Address</label><input type="text" placeholder="e.g. 742 Evergreen Terrace" required></div>
+                <div class="field"><label class="fl">Apt / Suite #</label><input type="text" placeholder="e.g. 3C"></div>
+                <div class="field"><label class="fl">City</label><input type="text" placeholder="e.g. Houston" required></div>
+                <div class="field"><label class="fl">State</label><input type="text" placeholder="TX" maxlength="2" required></div>
+                <div class="field"><label class="fl">ZIP Code</label><input type="text" placeholder="77083" maxlength="5" required></div>
+            </div>
+
+            <div class="sub-heading">Previous Address (if resided less than 2 years at current)</div>
+            <div class="fg fg-addr">
+                <div class="field"><label class="fl">Street Address</label><input type="text" placeholder="Previous street address"></div>
+                <div class="field"><label class="fl">Apt / Suite #</label><input type="text"></div>
+                <div class="field"><label class="fl">City</label><input type="text"></div>
+                <div class="field"><label class="fl">State</label><input type="text" maxlength="2"></div>
+                <div class="field"><label class="fl">ZIP Code</label><input type="text" maxlength="5"></div>
+            </div>
+
+            <div class="fg fg-3">
+                <div class="field"><label class="fl">Home Phone</label><input type="text" placeholder="(832) 000-0000" required></div>
+                <div class="field"><label class="fl">Cell / Alternate Phone</label><input type="text" placeholder="(713) 000-0000"></div>
+                <div class="field"><label class="fl">Social Security Number</label><input type="text" placeholder="XXX-XX-XXXX" required></div>
+            </div>
+
+            <div class="sub-heading">Emergency Contact</div>
+            <div class="fg fg-4">
+                <div class="field"><label class="fl">Emergency Contact Name</label><input type="text" placeholder="Full name" required></div>
+                <div class="field"><label class="fl">Relationship</label><input type="text" placeholder="e.g. Spouse" required></div>
+                <div class="field"><label class="fl">Phone Number</label><input type="text" placeholder="(XXX) XXX-XXXX" required></div>
+                <div class="field"><label class="fl">Alternate Phone</label><input type="text" placeholder="(XXX) XXX-XXXX"></div>
+            </div>
+
+            <div class="fg fg-2">
+                <div class="field"><label class="fl">Languages Spoken Fluently</label><input type="text" placeholder="e.g. English, Spanish" required></div>
+                <div class="field"><label class="fl">Can You Safely Lift 50 lbs Unassisted?</label>
+                    <select required><option value="">-- Select --</option><option>Yes</option><option>No</option></select>
+                </div>
+            </div>
+
+            <div class="sub-heading">Eligibility Questions</div>
+            <div class="yn-row"><span class="yn-label">Are you legally authorized to work in the United States?</span>
+                <div class="yn-opts"><label><input type="radio" name="eligible_work" value="Yes"> Yes</label><label><input type="radio" name="eligible_work" value="No"> No</label></div></div>
+            <div class="yn-row"><span class="yn-label">Are you 18 years of age or older?</span>
+                <div class="yn-opts"><label><input type="radio" name="age18" value="Yes"> Yes</label><label><input type="radio" name="age18" value="No"> No</label></div></div>
+            <div class="yn-row"><span class="yn-label">Do you have a valid Driver's License?</span>
+                <div class="yn-opts"><label><input type="radio" name="dl_valid" value="Yes"> Yes</label><label><input type="radio" name="dl_valid" value="No"> No</label></div></div>
+            <div class="yn-row"><span class="yn-label">Do you have current valid auto insurance?</span>
+                <div class="yn-opts"><label><input type="radio" name="ins_valid" value="Yes"> Yes</label><label><input type="radio" name="ins_valid" value="No"> No</label></div></div>
+
+            <div class="fg fg-3">
+                <div class="field"><label class="fl">State Driver's License #</label><input type="text" placeholder="TX DL Number"></div>
+                <div class="field"><label class="fl">Issuing State</label><input type="text" placeholder="TX" maxlength="2"></div>
+                <div class="field"><label class="fl">License Expiration Date</label><input type="date"></div>
+            </div>
+
+            <div class="sub-heading">Background Disclosure Questions</div>
+            <p style="font-size:12px;color:#555;margin-bottom:8px;">A conviction does not automatically disqualify you. Answer all questions honestly.</p>
+            <div class="yn-row"><span class="yn-label">Have you ever been convicted of a felony?</span>
+                <div class="yn-opts"><label><input type="radio" name="felony" value="Yes"> Yes</label><label><input type="radio" name="felony" value="No"> No</label></div></div>
+            <div class="yn-row"><span class="yn-label">Have you ever been convicted of theft?</span>
+                <div class="yn-opts"><label><input type="radio" name="theft" value="Yes"> Yes</label><label><input type="radio" name="theft" value="No"> No</label></div></div>
+            <div class="yn-row"><span class="yn-label">Have you ever been convicted of abuse-related misdemeanor?</span>
+                <div class="yn-opts"><label><input type="radio" name="abuse_misd" value="Yes"> Yes</label><label><input type="radio" name="abuse_misd" value="No"> No</label></div></div>
+            <div class="yn-row"><span class="yn-label">Have you ever had a CPS or APS finding against you?</span>
+                <div class="yn-opts"><label><input type="radio" name="cps_aps" value="Yes"> Yes</label><label><input type="radio" name="cps_aps" value="No"> No</label></div></div>
+
+            <div class="sub-heading">Conviction Detail Table (if yes to any above)</div>
+            <table class="form-table" id="convictionTable">
+                <thead><tr><th style="width:28px;">#</th><th>Offense</th><th>Date</th><th>Place / Jurisdiction</th><th>Disposition / Outcome</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align:center;background:var(--label-bg);font-weight:600;color:var(--navy);">1</td>
+                        <td><input type="text" placeholder="e.g. Misdemeanor assault"></td>
+                        <td><input type="date"></td>
+                        <td><input type="text" placeholder="e.g. Harris County, TX"></td>
+                        <td><input type="text" placeholder="e.g. Probation, 12 months"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn-add-row" onclick="addRow('convictionTable', ['','date','',''])">+ Add Row</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 3: AVAILABILITY
+    ═══════════════════════════════════════════════════════ -->
+    <div class="panel">
+        <div class="panel-header">3 — Availability</div>
+        <div class="panel-body">
+            <div class="cb-group-title">Days Available (Check All That Apply)</div>
+            <div class="cb-grid">
+                <div class="cb-item"><input type="checkbox"><label>Monday</label></div>
+                <div class="cb-item"><input type="checkbox"><label>Tuesday</label></div>
+                <div class="cb-item"><input type="checkbox"><label>Wednesday</label></div>
+                <div class="cb-item"><input type="checkbox"><label>Thursday</label></div>
+                <div class="cb-item"><input type="checkbox"><label>Friday</label></div>
+                <div class="cb-item"><input type="checkbox"><label>Saturday</label></div>
+                <div class="cb-item"><input type="checkbox"><label>Sunday</label></div>
+                <div class="cb-item"><input type="checkbox"><label>Holidays</label></div>
+            </div>
+            <div class="cb-group-title">Shifts Available (Check All That Apply)</div>
+            <div class="cb-grid">
+                <div class="cb-item"><input type="checkbox"><label>7:00 AM – 3:00 PM</label></div>
+                <div class="cb-item"><input type="checkbox"><label>3:00 PM – 11:00 PM</label></div>
+                <div class="cb-item"><input type="checkbox"><label>11:00 PM – 7:00 AM</label></div>
+                <div class="cb-item"><input type="checkbox"><label>7:00 AM – 7:00 PM (12hr)</label></div>
+                <div class="cb-item"><input type="checkbox"><label>7:00 PM – 7:00 AM (12hr)</label></div>
+                <div class="cb-item"><input type="checkbox"><label>Other / Flexible</label></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 4: EDUCATION
+    ═══════════════════════════════════════════════════════ -->
+    <div class="panel page-break">
+        <div class="panel-header">4 — Education History</div>
+        <div class="panel-body">
+            <p style="font-size:12px;color:#666;margin-bottom:8px;">List all schools attended. Add as many rows as needed — the first row is an example to guide you.</p>
+            <table class="form-table" id="educationTable">
+                <thead>
+                    <tr>
+                        <th style="width:28px;">#</th>
+                        <th>School Name </th>
+                        <th>Level / Type</th>
+                        <th>Years Attended</th>
+                        <th>Degree / Diploma / Certificate</th>
+                        <th>Year Completed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align:center;background:var(--label-bg);font-weight:600;color:var(--navy);">1</td>
+                        <td><input type="text" placeholder="e.g. School name "></td>
+                        <td><input type="text" placeholder="e.g. High School, College, Trade"></td>
+                        <td><input type="text" placeholder="e.g. 2014 – 2018"></td>
+                        <td><input type="text" placeholder="e.g. High School Diploma"></td>
+                        <td><input type="text" placeholder="e.g. 2018"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn-add-row" onclick="addRow('educationTable', ['','','','',''])">+ Add Education Row</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 5: LICENSES & CERTIFICATIONS
+    ═══════════════════════════════════════════════════════ -->
+    <div class="panel">
+        <div class="panel-header">5 — Professional Licenses &amp; Certifications</div>
+        <div class="panel-body">
+            <div class="sub-heading">Professional Licenses</div>
+            <table class="form-table" id="licenseTable">
+                <thead><tr><th style="width:28px;">#</th><th>License Type</th><th>State Issued</th><th>Date Issued</th><th>Expiration Date</th><th>License Number</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align:center;background:var(--label-bg);font-weight:600;color:var(--navy);">1</td>
+                        <td><input type="text" placeholder="e.g. RN, LVN, CNA"></td>
+                        <td><input type="text" placeholder="TX" maxlength="2"></td>
+                        <td><input type="date"></td>
+                        <td><input type="date"></td>
+                        <td><input type="text" placeholder="License #"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center;background:var(--label-bg);font-weight:600;color:var(--navy);">2</td>
+                        <td><input type="text"></td>
+                        <td><input type="text" maxlength="2"></td>
+                        <td><input type="date"></td>
+                        <td><input type="date"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn-add-row" onclick="addRow('licenseTable', ['','','date','date',''])">+ Add License Row</button>
+
+            <div class="sub-heading" style="margin-top:14px;">Certifications</div>
+            <div class="fg fg-3">
+                <div>
+                    <div class="yn-row" style="margin-bottom:4px;"><span class="yn-label">CPR Certified?</span>
+                        <div class="yn-opts"><label><input type="radio" name="cpr" value="Yes"> Yes</label><label><input type="radio" name="cpr" value="No"> No</label></div></div>
+                    <div class="field"><label class="fl">CPR Expiration Date</label><input type="date"></div>
+                </div>
+                <div>
+                    <div class="yn-row" style="margin-bottom:4px;"><span class="yn-label">ACLS Certified?</span>
+                        <div class="yn-opts"><label><input type="radio" name="acls" value="Yes"> Yes</label><label><input type="radio" name="acls" value="No"> No</label></div></div>
+                    <div class="field"><label class="fl">ACLS Expiration Date</label><input type="date"></div>
+                </div>
+                <div>
+                    <div class="yn-row" style="margin-bottom:4px;"><span class="yn-label">Malpractice Insurance?</span>
+                        <div class="yn-opts"><label><input type="radio" name="malpractice" value="Yes"> Yes</label><label><input type="radio" name="malpractice" value="No"> No</label></div></div>
+                    <div class="field"><label class="fl">Policy Number</label><input type="text" placeholder="Policy #"></div>
+                </div>
+            </div>
+            <div class="fg fg-2">
+                <div class="field"><label class="fl">Other Certifications</label><input type="text" placeholder="e.g. First Aid, Medication Aide"></div>
+                <div class="field"><label class="fl">Other Skills / Special Training</label><input type="text" placeholder="e.g. Sign language, bilingual care"></div>
+            </div>
+
+            <div class="sub-heading">HCS Core Competency Experience</div>
+            <div class="cb-grid">
+                <div class="cb-item"><input type="checkbox"><label>Medication Administration</label></div>
+                <div class="cb-item"><input type="checkbox"><label>Personal Care / ADLs</label></div>
+                <div class="cb-item"><input type="checkbox"><label>Behavioural Support</label></div>
+                <div class="cb-item"><input type="checkbox"><label>G-Tube / Feeding</label></div>
+                <div class="cb-item"><input type="checkbox"><label>Seizure Management</label></div>
+                <div class="cb-item"><input type="checkbox"><label>Transfer / Mobility</label></div>
+                <div class="cb-item"><input type="checkbox"><label>Community Development</label></div>
+                <div class="cb-item"><input type="checkbox"><label>DSP Experience</label></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 6: EMPLOYMENT HISTORY
+    ═══════════════════════════════════════════════════════ -->
+    <div class="panel page-break">
+        <div class="panel-header">6 — Employment History (Most Recent First)</div>
+        <div class="panel-body">
+            <p style="font-size:12px;color:#555;margin-bottom:12px;">List last three employers. Include all employment even if part-time or temporary.</p>
+
+            <!-- Employer 1 -->
+            <div class="employer-block">
+                <div class="block-title">Employer #1 — Most Recent</div>
+                <div class="fg fg-3">
+                    <div class="field"><label class="fl">Employer / Company Name</label><input type="text" placeholder="Company name" required></div>
+                    <div class="field"><label class="fl">Position / Job Title</label><input type="text" placeholder="Your title" required></div>
+                    <div class="field"><label class="fl">Phone Number</label><input type="text" placeholder="(XXX) XXX-XXXX"></div>
+                </div>
+                <div class="fg fg-3">
+                    <div class="field" style="grid-column:span 2;"><label class="fl">Employer Address</label><input type="text" placeholder="Street, City, State, ZIP"></div>
+                    <div class="field"><label class="fl">Supervisor Name</label><input type="text" placeholder="Supervisor's full name"></div>
+                </div>
+                <div class="fg fg-4">
+                    <div class="field"><label class="fl">Employed From</label><input type="date"></div>
+                    <div class="field"><label class="fl">Employed To</label><input type="date"></div>
+                    <div class="field"><label class="fl">Starting Pay ($/hr)</label><input type="text" placeholder="$0.00"></div>
+                    <div class="field"><label class="fl">Final Pay ($/hr)</label><input type="text" placeholder="$0.00"></div>
+                </div>
+                <div class="yn-row"><span class="yn-label">May we contact this employer?</span>
+                    <div class="yn-opts"><label><input type="radio" name="contact_emp1" value="Yes"> Yes</label><label><input type="radio" name="contact_emp1" value="No"> No</label></div></div>
+                <div class="field" style="margin-bottom:8px;"><label class="fl">Primary Duties / Responsibilities</label><textarea placeholder="Describe your main duties..."></textarea></div>
+                <div class="field"><label class="fl">Reason for Leaving</label><input type="text" placeholder="e.g. Relocation, better opportunity"></div>
+            </div>
+
+            <!-- Employer 2 -->
+            <div class="employer-block">
+                <div class="block-title">Employer #2</div>
+                <div class="fg fg-3">
+                    <div class="field"><label class="fl">Employer / Company Name</label><input type="text" placeholder="Company name"></div>
+                    <div class="field"><label class="fl">Position / Job Title</label><input type="text"></div>
+                    <div class="field"><label class="fl">Phone Number</label><input type="text" placeholder="(XXX) XXX-XXXX"></div>
+                </div>
+                <div class="fg fg-3">
+                    <div class="field" style="grid-column:span 2;"><label class="fl">Employer Address</label><input type="text"></div>
+                    <div class="field"><label class="fl">Supervisor Name</label><input type="text"></div>
+                </div>
+                <div class="fg fg-4">
+                    <div class="field"><label class="fl">Employed From</label><input type="date"></div>
+                    <div class="field"><label class="fl">Employed To</label><input type="date"></div>
+                    <div class="field"><label class="fl">Starting Pay ($/hr)</label><input type="text" placeholder="$0.00"></div>
+                    <div class="field"><label class="fl">Final Pay ($/hr)</label><input type="text" placeholder="$0.00"></div>
+                </div>
+                <div class="yn-row"><span class="yn-label">May we contact this employer?</span>
+                    <div class="yn-opts"><label><input type="radio" name="contact_emp2" value="Yes"> Yes</label><label><input type="radio" name="contact_emp2" value="No"> No</label></div></div>
+                <div class="field" style="margin-bottom:8px;"><label class="fl">Primary Duties / Responsibilities</label><textarea></textarea></div>
+                <div class="field"><label class="fl">Reason for Leaving</label><input type="text"></div>
+            </div>
+
+            <!-- Employer 3 -->
+            <div class="employer-block">
+                <div class="block-title">Employer #3</div>
+                <div class="fg fg-3">
+                    <div class="field"><label class="fl">Employer / Company Name</label><input type="text"></div>
+                    <div class="field"><label class="fl">Position / Job Title</label><input type="text"></div>
+                    <div class="field"><label class="fl">Phone Number</label><input type="text" placeholder="(XXX) XXX-XXXX"></div>
+                </div>
+                <div class="fg fg-3">
+                    <div class="field" style="grid-column:span 2;"><label class="fl">Employer Address</label><input type="text"></div>
+                    <div class="field"><label class="fl">Supervisor Name</label><input type="text"></div>
+                </div>
+                <div class="fg fg-4">
+                    <div class="field"><label class="fl">Employed From</label><input type="date"></div>
+                    <div class="field"><label class="fl">Employed To</label><input type="date"></div>
+                    <div class="field"><label class="fl">Starting Pay ($/hr)</label><input type="text" placeholder="$0.00"></div>
+                    <div class="field"><label class="fl">Final Pay ($/hr)</label><input type="text" placeholder="$0.00"></div>
+                </div>
+                <div class="yn-row"><span class="yn-label">May we contact this employer?</span>
+                    <div class="yn-opts"><label><input type="radio" name="contact_emp3" value="Yes"> Yes</label><label><input type="radio" name="contact_emp3" value="No"> No</label></div></div>
+                <div class="field" style="margin-bottom:8px;"><label class="fl">Primary Duties / Responsibilities</label><textarea></textarea></div>
+                <div class="field"><label class="fl">Reason for Leaving</label><input type="text"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 7: CHARACTER REFERENCES
+    ═══════════════════════════════════════════════════════ -->
+    <div class="panel">
+        <div class="panel-header">7 — Character References (Non-Relatives Only)</div>
+        <div class="panel-body">
+            <p style="font-size:12px;color:#555;margin-bottom:12px;">Provide three individuals with personal knowledge of your professional character. Do not list relatives.</p>
+            <div class="ref-block">
+                <div class="block-title">Reference #1</div>
+                <div class="fg fg-3">
+                    <div class="field"><label class="fl">Full Name &amp; Title</label><input type="text" placeholder="e.g. Dr. Robert Hibbert" required></div>
+                    <div class="field"><label class="fl">Relationship to Applicant</label><input type="text" placeholder="e.g. Former Supervisor" required></div>
+                    <div class="field"><label class="fl">Phone Number</label><input type="text" placeholder="(XXX) XXX-XXXX" required></div>
+                </div>
+            </div>
+            <div class="ref-block">
+                <div class="block-title">Reference #2</div>
+                <div class="fg fg-3">
+                    <div class="field"><label class="fl">Full Name &amp; Title</label><input type="text" placeholder="e.g. Sarah Jenkins, RN" required></div>
+                    <div class="field"><label class="fl">Relationship to Applicant</label><input type="text" placeholder="e.g. Coworker" required></div>
+                    <div class="field"><label class="fl">Phone Number</label><input type="text" placeholder="(XXX) XXX-XXXX" required></div>
+                </div>
+            </div>
+            <div class="ref-block">
+                <div class="block-title">Reference #3</div>
+                <div class="fg fg-3">
+                    <div class="field"><label class="fl">Full Name &amp; Title</label><input type="text" placeholder="e.g. Arthur Pendelton" required></div>
+                    <div class="field"><label class="fl">Relationship to Applicant</label><input type="text" placeholder="e.g. Case Manager" required></div>
+                    <div class="field"><label class="fl">Phone Number</label><input type="text" placeholder="(XXX) XXX-XXXX" required></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 8: HEALTH & COMPLIANCE
+    ═══════════════════════════════════════════════════════ -->
+    <div class="panel page-break">
+        <div class="panel-header">8 — Health &amp; Compliance (Texas HHSC)</div>
+        <div class="panel-body">
+            <div class="fg fg-3">
+                <div class="field"><label class="fl">Tuberculosis (TB) Screening Status</label>
+                    <select required><option value="">-- Select --</option>
+                        <option>Active / Clear (within past 12 months)</option>
+                        <option>Update Required</option></select></div>
+                <div class="field"><label class="fl">COVID-19 Vaccination Status</label>
+                    <select required><option value="">-- Select --</option>
+                        <option>Fully Vaccinated + Booster</option>
+                        <option>Fully Vaccinated (no booster)</option>
+                        <option>Partially Vaccinated</option>
+                        <option>Not Vaccinated</option></select></div>
+                <div class="field"><label class="fl">CPR Certification Expiration</label><input type="date" required></div>
+            </div>
+            <div class="yn-row"><span class="yn-label">I consent to a criminal background check as a condition of employment.</span>
+                <div class="yn-opts"><label><input type="radio" name="bg_consent" value="Yes"> Yes</label><label><input type="radio" name="bg_consent" value="No"> No</label></div></div>
+            <div class="yn-row"><span class="yn-label">I consent to pre-employment and random drug screening.</span>
+                <div class="yn-opts"><label><input type="radio" name="drug_consent" value="Yes"> Yes</label><label><input type="radio" name="drug_consent" value="No"> No</label></div></div>
+
+            <div class="legal-text">
+                <strong>Background Check Authorization:</strong> I hereby authorize Integrated Sycamore Group LLC and its designated agents to procure a consumer report and/or investigative consumer report regarding my background, including criminal records, employment history, education verification, and personal references. I understand this check is required by Texas HHSC regulations for all HCS providers. I release all parties from any liability arising from this inquiry and certify all information provided is true and accurate to the best of my knowledge.
+            </div>
+
+            <div class="fg fg-2">
+                <div>
+                    <label class="fl">Applicant Signature — Background Check Authorization</label>
+                    <div class="sig-wrap">
+                        <div class="sig-label">✍ Draw your signature below</div>
+                        <canvas class="sig-canvas" id="sig-bg" data-height="100"></canvas>
+                        <div class="sig-actions"><button type="button" class="btn-clear" onclick="clearSig('sig-bg')">Clear</button></div>
+                    </div>
+                </div>
+                <div class="field" style="align-self:flex-end;">
+                    <label class="fl">Date</label><input type="date" required>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 9: CERTIFICATION & APPLICANT SIGNATURE
+    ═══════════════════════════════════════════════════════ -->
+    <div class="panel">
+        <div class="panel-header">9 — Certification &amp; Applicant Signature</div>
+        <div class="panel-body">
+            <div class="legal-text" style="margin-bottom:14px;">
+                <p style="margin-bottom:6px;"><strong>By signing below, I certify that:</strong></p>
+                <ol style="padding-left:18px;line-height:1.8;font-size:12.5px;">
+                    <li>All information provided in this application is true, correct, and complete to the best of my knowledge.</li>
+                    <li>I understand that any misrepresentation, falsification, or material omission of information in this application may result in disqualification from employment or immediate termination if discovered after hire.</li>
+                    <li>I authorize Integrated Sycamore Group LLC to verify all references, employment history, education, and other information provided in this application.</li>
+                    <li>I understand and agree that employment with Integrated Sycamore Group LLC is contingent upon successful completion of all required background checks, drug screening, and credentialing verifications.</li>
+                </ol>
+            </div>
+            <div class="fg fg-2">
+                <div>
+                    <label class="fl">Applicant Signature (Certification)</label>
+                    <div class="sig-wrap">
+                        <div class="sig-label">✍ Draw your full legal signature below</div>
+                        <canvas class="sig-canvas" id="sig-cert" data-height="110"></canvas>
+                        <div class="sig-actions"><button type="button" class="btn-clear" onclick="clearSig('sig-cert')">Clear</button></div>
+                    </div>
+                </div>
+                <div class="field" style="align-self:flex-end;">
+                    <label class="fl">Date Signed</label><input type="date" required>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 10: HCS COMPETENCY EVALUATION (9 QUESTIONS)
+    ═══════════════════════════════════════════════════════ -->
+    <div class="panel page-break">
+        <div class="panel-header">10 — HCS Competency Evaluation</div>
+        <div class="panel-body">
+            <div class="fg fg-2" style="margin-bottom:14px;">
+                <div class="field"><label class="fl">Applicant Name (Print)</label><input type="text" required></div>
+                <div class="field"><label class="fl">Date</label><input type="date" required></div>
+            </div>
+            <p style="font-size:12px;color:#555;margin-bottom:10px;">Answer each question in your own words. Provide complete, thoughtful responses.</p>
+
+            <div class="field" style="margin-bottom:10px;"><label class="fl" style="background:none;border:none;padding:2px 0;font-size:13px;font-weight:700;color:var(--navy);">1. Explain the philosophy of Home and Community-Based Services (HCS):</label><textarea style="min-height:75px;" placeholder="Describe consumer independence, community placement principles, and normalization..."></textarea></div>
+            <div class="field" style="margin-bottom:10px;"><label class="fl" style="background:none;border:none;padding:2px 0;font-size:13px;font-weight:700;color:var(--navy);">2. Based on your understanding, list your key job responsibilities in this role:</label><textarea style="min-height:75px;" placeholder="List and explain each major responsibility..."></textarea></div>
+            <div class="field" style="margin-bottom:10px;"><label class="fl" style="background:none;border:none;padding:2px 0;font-size:13px;font-weight:700;color:var(--navy);">3. How would you respond to a medical emergency situation? Explain in detail:</label><textarea style="min-height:75px;" placeholder="Describe your step-by-step emergency response protocol..."></textarea></div>
+            <div class="field" style="margin-bottom:10px;"><label class="fl" style="background:none;border:none;padding:2px 0;font-size:13px;font-weight:700;color:var(--navy);">4. What would you do if your shift ends and no one shows up to relieve you?</label><textarea style="min-height:75px;"></textarea></div>
+            <div class="field" style="margin-bottom:10px;"><label class="fl" style="background:none;border:none;padding:2px 0;font-size:13px;font-weight:700;color:var(--navy);">5. What do you understand by 'Consumer Confidentiality' (HIPAA) and how would you protect it?</label><textarea style="min-height:75px;"></textarea></div>
+            <div class="field" style="margin-bottom:10px;"><label class="fl" style="background:none;border:none;padding:2px 0;font-size:13px;font-weight:700;color:var(--navy);">6. What would you do if a consumer refuses to eat because they dislike what was served?</label><textarea style="min-height:75px;"></textarea></div>
+            <div class="field" style="margin-bottom:10px;"><label class="fl" style="background:none;border:none;padding:2px 0;font-size:13px;font-weight:700;color:var(--navy);">7. What do you understand by Abuse, Neglect and Exploitation (ANE)?</label><textarea style="min-height:75px;"></textarea></div>
+            <div class="field" style="margin-bottom:10px;"><label class="fl" style="background:none;border:none;padding:2px 0;font-size:13px;font-weight:700;color:var(--navy);">8. How would you handle a situation where a consumer exhibits challenging or self-injurious behaviour?</label><textarea style="min-height:75px;"></textarea></div>
+            <div class="field" style="margin-bottom:10px;"><label class="fl" style="background:none;border:none;padding:2px 0;font-size:13px;font-weight:700;color:var(--navy);">9. Describe your experience assisting individuals with disabilities in community integration activities:</label><textarea style="min-height:75px;"></textarea></div>
+
+            <div class="fg fg-2" style="margin-top:14px;">
+                <div>
+                    <label class="fl">Applicant Signature</label>
+                    <div class="sig-wrap">
+                        <div class="sig-label">✍ Draw your signature below</div>
+                        <canvas class="sig-canvas" id="sig-eval" data-height="90"></canvas>
+                        <div class="sig-actions"><button type="button" class="btn-clear" onclick="clearSig('sig-eval')">Clear</button></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="field" style="margin-bottom:8px;"><label class="fl">Reviewed By</label><input type="text" placeholder="Reviewer name"></div>
+                    <div class="field" style="margin-bottom:8px;"><label class="fl">Review Date</label><input type="date"></div>
+                    <div class="field"><label class="fl">Remarks</label><input type="text" placeholder="Reviewer remarks"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 11: ANE ACKNOWLEDGEMENT
+    ═══════════════════════════════════════════════════════ -->
+    <div class="panel page-break">
+        <div class="panel-header">11 — Abuse, Neglect &amp; Exploitation (ANE) Acknowledgement</div>
+        <div class="panel-body">
+            <div class="legal-text" style="margin-bottom:14px;">
+                <strong>Texas Legislature Senate Bill 2170 — Mandatory Reporting Acknowledgement</strong><br><br>
+                Pursuant to Texas Health and Safety Code, Chapter 250 and the Texas Human Resources Code Chapter 48, I acknowledge and understand the following:<br><br>
+                I am employed by or contracting with an HCS (Home and Community-Based Services) provider licensed by the Texas Health and Human Services Commission (HHSC). As such, I am a <strong>mandatory reporter</strong> of Abuse, Neglect, and Exploitation (ANE).<br><br>
+                I am legally required to report any knowledge of or reasonable suspicion of Abuse, Neglect, or Exploitation of an individual with an intellectual or developmental disability to the Department of Family and Protective Services (DFPS) immediately, but no later than <strong>one (1) hour</strong> from the time I first witness or learn of the incident.<br><br>
+                Reports must be made by calling the DFPS Abuse Hotline: <strong>1-800-252-5400</strong> or online at <strong>www.txabusehotline.org</strong>.<br><br>
+                Failure to report as required constitutes a <strong>Class A misdemeanor</strong> under Texas law. TDPRS Number: ____________
+            </div>
+
+            <div class="sub-heading">Acknowledgement Signatures</div>
+            <table class="sig-table">
+                <thead>
+                    <tr>
+                        <th>Consumer / Staff</th>
+                        <th>Legally Authorized Representative</th>
+                        <th>Company Representative</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="sig-wrap">
+                                <div class="sig-label">✍ Signature</div>
+                                <canvas class="sig-canvas" id="sig-ane-consumer" data-height="80"></canvas>
+                                <div class="sig-actions"><button type="button" class="btn-clear" onclick="clearSig('sig-ane-consumer')">Clear</button></div>
+                            </div>
+                            <div class="field" style="margin-top:6px;"><label class="fl">Date</label><input type="date"></div>
+                        </td>
+                        <td>
+                            <div class="sig-wrap">
+                                <div class="sig-label">✍ Signature</div>
+                                <canvas class="sig-canvas" id="sig-ane-lar" data-height="80"></canvas>
+                                <div class="sig-actions"><button type="button" class="btn-clear" onclick="clearSig('sig-ane-lar')">Clear</button></div>
+                            </div>
+                            <div class="field" style="margin-top:6px;"><label class="fl">Date</label><input type="date"></div>
+                        </td>
+                        <td>
+                            <div class="sig-wrap">
+                                <div class="sig-label">✍ Signature</div>
+                                <canvas class="sig-canvas" id="sig-ane-company" data-height="80"></canvas>
+                                <div class="sig-actions"><button type="button" class="btn-clear" onclick="clearSig('sig-ane-company')">Clear</button></div>
+                            </div>
+                            <div class="field" style="margin-top:6px;"><label class="fl">Date</label><input type="date"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 12: COMPLAINT PROCEDURE
+    ═══════════════════════════════════════════════════════ -->
+    <div class="panel page-break">
+        <div class="panel-header">12 — Complaint Procedure</div>
+        <div class="panel-body">
+            <p style="font-size:12.5px;margin-bottom:10px;">Integrated Sycamore Group LLC is committed to resolving all employee and consumer concerns promptly and fairly. Follow these steps:</p>
+            <ol class="complaint-steps">
+                <li><strong>Informal Resolution:</strong> Speak directly with your immediate supervisor or Program Manager within 24 hours of the incident to attempt informal resolution.</li>
+                <li><strong>Written Complaint:</strong> If unresolved, submit a written complaint to the Program Director within 5 business days. Include all relevant dates, individuals involved, and a description of the concern.</li>
+                <li><strong>Management Review:</strong> The Program Director will acknowledge receipt within 2 business days and conduct a formal review within 10 business days, interviewing involved parties as necessary.</li>
+                <li><strong>Written Response:</strong> A written determination will be provided to all parties within 15 business days of receipt of the formal complaint.</li>
+                <li><strong>External Escalation:</strong> If the matter remains unresolved after internal review, the complainant may contact DADS (Department of Aging and Disability Services) or HHSC directly.</li>
+            </ol>
+
+            <div class="legal-text" style="margin-top:12px;">
+                <strong>Note:</strong> Complaints regarding consumer care, rights violations, or regulatory non-compliance may also be reported directly to DADS at any time without first exhausting internal procedures.
+            </div>
+
+            <div class="sub-heading">Contact Directory</div>
+            <table class="contact-table">
+                <thead><tr><th>Role</th><th>Name / Department</th><th>Phone Number</th></tr></thead>
+                <tbody>
+                    <tr><td>Program Manager</td><td>Integrated Sycamore Group LLC</td><td>832-335-4098</td></tr>
+                    <tr><td>Nurse</td><td>Nursing Services</td><td>713-882-0161</td></tr>
+                    <tr><td>Program Director</td><td>Integrated Sycamore Group LLC</td><td>832-335-4098</td></tr>
+                    <tr><td>DADS Hotline</td><td>Dept. of Aging &amp; Disability Services</td><td>1-800-458-9858</td></tr>
+                </tbody>
+            </table>
+
+            <div class="fg fg-2" style="margin-top:14px;">
+                <div>
+                    <label class="fl">Residential Manager Signature</label>
+                    <div class="sig-wrap">
+                        <canvas class="sig-canvas" id="sig-mgr" data-height="90"></canvas>
+                        <div class="sig-actions"><button type="button" class="btn-clear" onclick="clearSig('sig-mgr')">Clear</button></div>
+                    </div>
+                    <div class="field" style="margin-top:6px;"><label class="fl">Date</label><input type="date"></div>
+                </div>
+                <div>
+                    <label class="fl">Program Director Signature</label>
+                    <div class="sig-wrap">
+                        <canvas class="sig-canvas" id="sig-director" data-height="90"></canvas>
+                        <div class="sig-actions"><button type="button" class="btn-clear" onclick="clearSig('sig-director')">Clear</button></div>
+                    </div>
+                    <div class="field" style="margin-top:6px;"><label class="fl">Date</label><input type="date"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 13: LETTERS OF REFERENCE — SEPARATE FILE
+    ═══════════════════════════════════════════════════════ -->
+    <div class="panel">
+        <div class="panel-header">13 — Letters of Reference</div>
+        <div class="panel-body">
+            <div class="legal-text" style="background:#eef6ff;border-color:#2980b9;">
+                <strong>📎 Letters of Reference are handled via a separate form.</strong><br><br>
+                The Letter of Reference form (<code>letter_of_reference.html</code>) is sent directly to each referee. They complete it independently and return it to Integrated Sycamore Group LLC.<br><br>
+                <strong>Steps:</strong>
+                <ol style="margin:8px 0 0 18px;line-height:1.9;">
+                    <li>Open <strong>letter_of_reference.html</strong> in your browser and share the link or file with each referee.</li>
+                    <li>Your referee completes their details, writes the letter, signs, and saves as PDF.</li>
+                    <li>They return the completed PDF to Integrated Sycamore Group LLC by email or in person.</li>
+                </ol>
+            </div>
+            <div style="margin-top:14px;">
+                <p style="font-weight:700;font-size:12.5px;color:var(--navy);margin-bottom:10px;">Referee Contact Details (for your records):</p>
+                <div class="ref-block">
+                    <div class="block-title">Referee #1</div>
+                    <div class="fg fg-3">
+                        <div class="field"><label class="fl">Full Name &amp; Title</label><input type="text" placeholder="e.g. Dr. Robert Hibbert"></div>
+                        <div class="field"><label class="fl">Relationship</label><input type="text" placeholder="e.g. Former Supervisor"></div>
+                        <div class="field"><label class="fl">Email or Phone (to send form)</label><input type="text" placeholder="referee@email.com or (XXX) XXX-XXXX"></div>
+                    </div>
+                </div>
+                <div class="ref-block">
+                    <div class="block-title">Referee #2</div>
+                    <div class="fg fg-3">
+                        <div class="field"><label class="fl">Full Name &amp; Title</label><input type="text" placeholder="e.g. Sarah Jenkins, RN"></div>
+                        <div class="field"><label class="fl">Relationship</label><input type="text" placeholder="e.g. Coworker"></div>
+                        <div class="field"><label class="fl">Email or Phone (to send form)</label><input type="text" placeholder="referee@email.com or (XXX) XXX-XXXX"></div>
+                    </div>
+                </div>
+                <div class="ref-block">
+                    <div class="block-title">Referee #3</div>
+                    <div class="fg fg-3">
+                        <div class="field"><label class="fl">Full Name &amp; Title</label><input type="text" placeholder="e.g. Arthur Pendelton"></div>
+                        <div class="field"><label class="fl">Relationship</label><input type="text" placeholder="e.g. Case Manager"></div>
+                        <div class="field"><label class="fl">Email or Phone (to send form)</label><input type="text" placeholder="referee@email.com or (XXX) XXX-XXXX"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SECTION 14: FORM W-4 (2026)
+    ═══════════════════════════════════════════════════════ -->
+    <div class="panel page-break">
+        <div class="panel-header">14 — IRS Form W-4 (2026) — Employee's Withholding Certificate</div>
+        <div class="panel-body">
+        <div class="w4-wrap">
+            <div class="w4-header">
+                <div class="w4-form-label">Form W-4</div>
+                <div class="w4-title">
+                    <strong>Employee's Withholding Certificate</strong>
+                    <span>Department of the Treasury — Internal Revenue Service (IRS)</span>
+                </div>
+                <div class="w4-year">2026</div>
+            </div>
+
+            <div class="w4-step-bar"><div class="w4-step-num">1</div> Step 1: Personal Information &amp; Federal Filing Status</div>
+            <div class="fg fg-3">
+                <div class="field"><label class="fl">First Name &amp; Middle Initial</label><input type="text" placeholder="e.g. Jane A." required></div>
+                <div class="field"><label class="fl">Last Name</label><input type="text" placeholder="e.g. Doe" required></div>
+                <div class="field"><label class="fl">Social Security Number</label><input type="text" placeholder="XXX-XX-XXXX" required></div>
+            </div>
+            <div class="fg fg-addr">
+                <div class="field"><label class="fl">Home Address (Street or Route)</label><input type="text" required></div>
+                <div class="field"><label class="fl">Apt #</label><input type="text"></div>
+                <div class="field"><label class="fl">City</label><input type="text" required></div>
+                <div class="field"><label class="fl">State</label><input type="text" maxlength="2" required></div>
+                <div class="field"><label class="fl">ZIP</label><input type="text" maxlength="5" required></div>
+            </div>
+            <p style="font-size:12px;font-weight:700;margin-bottom:5px;">Filing Status — check only ONE box:</p>
+            <div style="display:flex;flex-direction:column;gap:5px;padding:10px;border:1px solid #ccc;background:#f9f9f9;margin-bottom:10px;">
+                <div class="cb-item"><input type="radio" name="w4filing" value="single"><label>☐ Single or Married filing separately</label></div>
+                <div class="cb-item"><input type="radio" name="w4filing" value="married"><label>☐ Married filing jointly or Qualifying surviving spouse</label></div>
+                <div class="cb-item"><input type="radio" name="w4filing" value="head"><label>☐ Head of household (check only if you're unmarried and pay more than half the cost of keeping up a home for yourself and a qualifying individual)</label></div>
+            </div>
+
+            <div class="w4-step-bar"><div class="w4-step-num">2</div> Step 2: Multiple Jobs or Spouse Works</div>
+            <div class="w4-sub">
+                <p style="font-size:12px;margin-bottom:8px;">Complete this step only if you hold more than one job at a time, or if you are married filing jointly and your spouse also works. Mark <strong>only one</strong>:</p>
+                <div class="cb-item" style="margin-bottom:6px;"><input type="checkbox" id="w4_2a"><label for="w4_2a"><strong>(a)</strong> Use the IRS Withholding Estimator at <em>www.irs.gov/W4App</em> for most accurate withholding.</label></div>
+                <div style="margin-bottom:6px;">
+                    <div class="cb-item"><input type="checkbox" id="w4_2b"><label for="w4_2b"><strong>(b)</strong> Use the Multiple Jobs Worksheet on page 3 of the W-4 and enter result here:</label></div>
+                    <div style="padding-left:28px;margin-top:4px;"><div class="field" style="max-width:200px;"><label class="fl">Step 2(b) Worksheet Amount</label><input type="text" placeholder="$0.00"></div></div>
+                </div>
+                <div class="cb-item"><input type="checkbox" id="w4_2c"><label for="w4_2c"><strong>(c)</strong> If there are only <em>two</em> jobs total (you and your spouse), check here. (Withholding is most accurate if incomes are similar.)</label></div>
+            </div>
+
+            <div class="w4-step-bar"><div class="w4-step-num">3</div> Step 3: Claim Dependents</div>
+            <div class="w4-sub">
+                <p style="font-size:12px;margin-bottom:8px;">If your total income will be $200,000 or less ($400,000 or less if married filing jointly):</p>
+                <div class="fg fg-3">
+                    <div class="field"><label class="fl">Qualifying children under age 17 × $2,000</label><input type="text" placeholder="$0.00"></div>
+                    <div class="field"><label class="fl">Other dependents × $500</label><input type="text" placeholder="$0.00"></div>
+                    <div class="field"><label class="fl">Total (add amounts above)</label><input type="text" placeholder="$0.00" style="font-weight:700;"></div>
+                </div>
+            </div>
+
+            <div class="w4-step-bar"><div class="w4-step-num">4</div> Step 4: Other Adjustments (Optional)</div>
+            <div class="w4-sub">
+                <div class="fg fg-3">
+                    <div class="field"><label class="fl">(a) Other income (not from jobs, e.g. interest, dividends)</label><input type="text" placeholder="$0.00"></div>
+                    <div class="field"><label class="fl">(b) Deductions (from Deductions Worksheet on p.3)</label><input type="text" placeholder="$0.00"></div>
+                    <div class="field"><label class="fl">(c) Extra withholding per pay period</label><input type="text" placeholder="$0.00"></div>
+                </div>
+                <div class="cb-item" style="margin-top:6px;"><input type="checkbox" id="w4_exempt"><label for="w4_exempt"><strong>Exemption from withholding:</strong> I claim exemption from withholding for 2026. I certify that I had no federal income tax liability in 2025 and expect none in 2026. If exempt, write "Exempt" here:</label></div>
+                <div class="field" style="max-width:180px;margin-top:6px;"><label class="fl">Exemption Status</label><input type="text" placeholder='Write "Exempt" if applicable'></div>
+            </div>
+
+            <div class="w4-step-bar"><div class="w4-step-num">5</div> Step 5: Employee Signature &amp; Date</div>
+            <p style="font-size:12px;margin-bottom:8px;color:#333;">Under penalties of perjury, I declare that this certificate, to the best of my knowledge and belief, is true, correct, and complete.</p>
+            <div class="fg fg-2">
+                <div>
+                    <label class="fl">Employee Signature (W-4)</label>
+                    <div class="sig-wrap">
+                        <div class="sig-label">✍ Draw your signature below</div>
+                        <canvas class="sig-canvas" id="sig-w4" data-height="100"></canvas>
+                        <div class="sig-actions"><button type="button" class="btn-clear" onclick="clearSig('sig-w4')">Clear</button></div>
+                    </div>
+                </div>
+                <div class="field" style="align-self:flex-end;"><label class="fl">Date Signed</label><input type="date" required></div>
+            </div>
+
+            <!-- EMPLOYER USE ONLY -->
+            <div class="w4-employer-box">
+                <div class="title">FOR EMPLOYER USE ONLY — Do Not Complete</div>
+                <div class="fg fg-3">
+                    <div class="field"><label class="fl">Employer Name &amp; Address</label><input type="text" value="Integrated Sycamore Group LLC, 8315 Sierra Hill Ct, Houston TX 77083"></div>
+                    <div class="field"><label class="fl">First Date of Employment</label><input type="date"></div>
+                    <div class="field"><label class="fl">Employer Identification Number (EIN)</label><input type="text" placeholder="XX-XXXXXXX"></div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="doc-footer">
+        Integrated Sycamore Group LLC &bull; 8315 Sierra Hill Ct, Houston TX 77083 &bull; Tel: 832-335-4098 / 713-835-2122
+    </div>
+
+    </div><!-- /printArea -->
+
+    <div class="action-bar">
+        <button type="button" class="btn-submit" onclick="downloadPDF()">💾 Download Completed Application (PDF)</button>
+    </div>
+
+    </form>
+</div><!-- /container -->
+
+<script>
+    // ── Add Table Row ───────────────────────────────────────
+    // colTypes: array of '' (text input) or 'date' (date input) for each data col (skip # col)
+    function addRow(tableId, colTypes) {
+        const tbody = document.querySelector('#' + tableId + ' tbody');
+        if (!tbody) return;
+        // Skip example row for count
+        const dataRows = Array.from(tbody.rows).filter(r => r.id !== 'eduExampleRow');
+        const rowNum = dataRows.length + 1;
+        const row = tbody.insertRow();
+
+        // # cell
+        const numCell = row.insertCell();
+        numCell.style.cssText = 'text-align:center;background:var(--label-bg);font-weight:600;color:var(--navy);';
+        numCell.textContent = rowNum;
+
+        // data cells
+        colTypes.forEach(type => {
+            const cell = row.insertCell();
+            const inp = document.createElement('input');
+            inp.type = type === 'date' ? 'date' : 'text';
+            inp.style.width = '100%';
+            cell.appendChild(inp);
+            // re-attach auto-expand listener
+            inp.addEventListener('blur', () => autoExpand(tableId, colTypes));
+        });
+    }
+
+    // ── Auto-expand when last row is fully filled ───────────
+    function autoExpand(tableId, colTypes) {
+        const tbody = document.querySelector('#' + tableId + ' tbody');
+        if (!tbody) return;
+        const dataRows = Array.from(tbody.rows).filter(r => r.id !== 'eduExampleRow');
+        const lastRow = dataRows[dataRows.length - 1];
+        if (!lastRow) return;
+        const inputs = lastRow.querySelectorAll('input');
+        const allFilled = Array.from(inputs).every(i => i.value.trim() !== '');
+        if (allFilled) addRow(tableId, colTypes);
+    }
+
+    // Attach auto-expand listeners to all existing table inputs on load
+    const expandableTables = [
+        { id: 'licenseTable',   cols: ['','','date','date',''] },
+        { id: 'convictionTable',cols: ['','date','',''] },
+        { id: 'educationTable', cols: ['','','','',''] },
+    ];
+
+    // ── Remove education example row on first interaction ──
+    function removeEduExample() {
+        const ex = document.getElementById('eduExampleRow');
+        if (ex) ex.remove();
+    }
+
+    // ── Signature Canvas Setup ──────────────────────────────
+    const sigs = {};
+
+    function initCanvas(id) {
+        const canvas = document.getElementById(id);
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const h = parseInt(canvas.dataset.height) || 100;
+
+        function resize() {
+            const w = canvas.parentElement.clientWidth - 2;
+            const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            canvas.width = w;
+            canvas.height = h;
+            ctx.lineWidth = 2.5; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+            ctx.strokeStyle = '#1B3A5C';
+            ctx.putImageData(imgData, 0, 0);
+        }
+
+        sigs[id] = { canvas, ctx, drawing: false };
+        resize();
+        window.addEventListener('resize', resize);
+
+        function pos(e) {
+            const r = canvas.getBoundingClientRect();
+            if (e.touches) return { x: e.touches[0].clientX - r.left, y: e.touches[0].clientY - r.top };
+            return { x: e.clientX - r.left, y: e.clientY - r.top };
+        }
+
+        canvas.addEventListener('mousedown', e => { sigs[id].drawing = true; const p = pos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); });
+        canvas.addEventListener('mousemove', e => { if (!sigs[id].drawing) return; const p = pos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
+        canvas.addEventListener('mouseup', () => sigs[id].drawing = false);
+        canvas.addEventListener('mouseleave', () => sigs[id].drawing = false);
+        canvas.addEventListener('touchstart', e => { e.preventDefault(); sigs[id].drawing = true; const p = pos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); }, { passive: false });
+        canvas.addEventListener('touchmove', e => { e.preventDefault(); if (!sigs[id].drawing) return; const p = pos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); }, { passive: false });
+        canvas.addEventListener('touchend', () => sigs[id].drawing = false);
+    }
+
+    function clearSig(id) {
+        const s = sigs[id];
+        if (s) s.ctx.clearRect(0, 0, s.canvas.width, s.canvas.height);
+    }
+
+    // Init all canvases + table auto-expand on load
+    window.addEventListener('load', () => {
+        document.querySelectorAll('.sig-canvas').forEach(c => initCanvas(c.id));
+
+        // Attach auto-expand blur listeners to all pre-existing table inputs
+        expandableTables.forEach(({ id, cols }) => {
+            const tbody = document.querySelector('#' + id + ' tbody');
+            if (!tbody) return;
+            Array.from(tbody.rows)
+                .filter(r => r.id !== 'eduExampleRow')
+                .forEach(row => {
+                    row.querySelectorAll('input').forEach(inp => {
+                        inp.addEventListener('blur', () => autoExpand(id, cols));
+                    });
+                });
+        });
+    });
+
+    // ── PDF Download ────────────────────────────────────────
+    function downloadPDF() {
+        window.print();
+    }
+</script>
+</body>
+</html>
